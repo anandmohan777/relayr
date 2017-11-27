@@ -20,7 +20,7 @@ def initscript():
         cur = conn.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS APP_DB(ID INT , DESCRIPTION TEXT);")
         app.logger.info("Table created successfully")
-        cur.execute("INSERT INTO APP_DB (ID, DESCRIPTION) VALUES (1, 'Hello World!')")
+        cur.execute("INSERT INTO APP_DB (ID, DESCRIPTION) VALUES (1, 'Hello, world')")
         cur.execute("SELECT * from APP_DB")
         conn.commit()	   
         return cur
