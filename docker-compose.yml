@@ -1,10 +1,9 @@
-#Using Docker Compose Version 3.1 to support swarm deployment
+# Using Docker Compose Version 3 which support swarm deployment.
 
-version: "3.1"
+version: "3"
 services:
   web:
-    # Application Image, pushed in Docker Hub registry
-    image: staneja9/relayr-project:2
+    image: anandmohan777/helloworld:1
     depends_on: 
       - postgres
     deploy:
@@ -12,7 +11,7 @@ services:
         condition: on-failure
       resources:
         limits:
-          cpus: "0.1"
+          cpus: "0.2"
           memory: 50M
     ports:
       - "8080:8080"
@@ -20,16 +19,15 @@ services:
       - webnet
 
   postgres:
-    #Postgres Db Engine, Using the public docker image for postgresSQL
     image: postgres
     ports:
-      - "5432"
+      - "5432:5432"
     environment:
       - POSTGRES_USER=relayr
-      - POSTGRES_PASSWORD=RelayrPassword
+      - POSTGRES_PASSWORD=Passw0rd
     networks:
       - webnet
 
-#Creating internal netwrok with Docker Swarm
+# Creating internal network from Docker Swarm.
 networks:
   webnet:

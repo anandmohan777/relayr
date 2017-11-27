@@ -1,19 +1,13 @@
 FROM ubuntu
 
-MAINTAINER Saurabh Taneja
+MAINTAINER ANAND MOHAN <anandmohan777@gmail.com>
 
-RUN apt-get update
-RUN apt-get install -y python python python-dev python-pip curl
-
+RUN apt-get update && apt-get install -y python python python-dev python-pip curl vim
 RUN pip install web.py
-RUN  python -m pip install psycopg2 Flask
+RUN python -m pip install psycopg2 Flask
 
-ADD /my_application /my_application
-
+ADD /app /app
 EXPOSE 8080
+WORKDIR /app
 
-WORKDIR /my_application
-
-CMD python hello.py
-
-
+CMD python helloworld.py
